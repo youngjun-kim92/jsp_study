@@ -1,4 +1,4 @@
-package jspJstl.ex01;
+package jspjstl.ex01;
 
 import java.sql.Date;
 

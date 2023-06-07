@@ -1,4 +1,4 @@
-package jspJquery.ex02;
+package jspjquery.ex02;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

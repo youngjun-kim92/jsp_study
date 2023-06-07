@@ -1,4 +1,4 @@
-package jspJquery.ex03;
+package jspjquery.ex03;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

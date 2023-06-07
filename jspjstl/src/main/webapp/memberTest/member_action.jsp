@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, jspJstl.ex01.*"    
+    import="java.util.*, jspjstl.ex01.*"    
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>회원관리 DB처리</title>
 <%-- useBean : Bean(자바클래스 객체)을 생성하는 액션태그 --%>
-<jsp:useBean id="memVo" class="jspJstl.ex01.MemberVO" />
+<jsp:useBean id="memVo" class="jspjstl.ex01.MemberVO" />
 <%-- setProperty : setter역할. 
 컬럼이름과 필드이름이 같으면 property에 *해줬을 때 같은 이름을 찾아서 넣어줌 (useBean의 id를 name으로 씀) --%>
 <jsp:setProperty property="*" name="memVo"/>

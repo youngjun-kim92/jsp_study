@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%
 	request.setCharacterEncoding("utf-8");
 	String msg = "아이디를 입력하지 않았습니다. 아이디를 입력해주세요";

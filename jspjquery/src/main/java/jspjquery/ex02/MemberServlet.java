@@ -1,4 +1,4 @@
-package jspJquery.ex02;
+package jspjquery.ex02;
 
 import java.io.IOException;
 import java.io.PrintWriter;
