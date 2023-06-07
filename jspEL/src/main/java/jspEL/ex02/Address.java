@@ -4,9 +4,12 @@ public class Address {
 	private String city;
 	private String zipcode;
 	
+	
+	//생성자
 	public Address() {
-		
+	
 	}
+	
 	public String getCity() {
 		return city;
 	}
@@ -19,6 +22,5 @@ public class Address {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	
-	
+
 }

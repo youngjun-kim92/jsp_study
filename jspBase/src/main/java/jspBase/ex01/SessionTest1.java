@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 @WebServlet("/sess1")
 public class SessionTest1 extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out=response.getWriter();
-		HttpSession session=request.getSession();
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
 		session.setAttribute("name", "홍길동");
 		out.print("<html><body>");
 		out.print("<h1>세션에 이름을 바인딩합니다.</h1>");

@@ -6,37 +6,48 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 	function fn_idCheck() {
-		let _id=$("chk_id").val();
-		if(_id=="") {
+		let _id = $("#chk_id").val();
+		/* 방법1
+		if(_id == "") {
+			alert("중복 체크할 ID를 입력해주세요");			
+		} else {
+			$.ajax
+		}*/
+		// 방법 2
+		if(_id == "") {
 			alert("중복 체크할 ID를 입력해주세요");
-			return;
-		}
+			return; //아래 내용 수행안하고 위로 돌아감
+		} 
 		$.ajax({
-			type:"post",
-			async:true,
-			dataType:"text",
-			url:"http://127.0.0.1:8090/jspjquery/member",
-			data:{id:_id},
+			type: "post",
+			async: true,
+			dataType: "text",
+			url: "http://127.0.0.1:8090/jspJquery/member",
+			//왼쪽의 id에 오른쪽의 _id 값이 들어감 
+			data: {id: _id}, 
 			success: function(data, textStatus) {
-				if(data=="usable") {
+				if(data == "usable") {
 					$("#resultMsg").html("사용할 수 있는 ID입니다.");
-					$("#btn_duplicate").prop("disabled",true);
-				}
-				else {
+					$("#resultMsg").css("color", "green");
+					//prop() : 속성에 접근하는 메소드
+					//다시 쓰게 하고싶으면 change()이벤트 사용해서 다시 able로 바꿔주면 됨
+					$("#btn_duplicate").prop("disabled", true);
+				} else {
 					$("#resultMsg").html("사용할 수 없는 ID입니다.");
+					$("#resultMsg").css("color", "red");
 				}
 			},
-			error: function (data, textStatus, error) {
+			error: function(data, textStatus, error) {
 				alert("에러가 발생했습니다.");
 			}
+			
 		});
-		
 	}
 </script>
 </head>
-<body>
-	<input type="text" id="chk_id">
-	<input type="button" id="btn_duplicate" value="ID 중복체크하기" onclick="fn_idCheck()">
-	<p id="resultMsg"></p>
+<body>	
+	ID <input type="text" id="chk_id" oninput="fn_idCheck()">
+	<!-- <input type="button" id="btn_duplicate" value="ID 중복체크하기" onclick="fn_idCheck()"> -->
+	<p id="resultMsg"></p>	
 </body>
 </html>

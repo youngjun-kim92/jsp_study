@@ -7,38 +7,47 @@
 <script type="text/javascript">
 	function fn_server() {
 		$.ajax({
-			type:"post", //또는 "post"
-			dataType:"xml",
-			async:false,
-			url:"http://127.0.0.1:8090/jspjquery/ajax2",			//"요청할 URL"
-			sucess: {									//정상 요청에 대한 응답처리
-				function (data, textStatus) {
-					$(info).find("book").each(function () {
-						let title=$(this).find("title").text();
-						let writer=$(this).find("writer").text();
-						let image=$(this).find("image").text();
-						$("bookInfo").append("<p>제목 : "+title + "</p>"+"<p>출판사 : "+wirter+"</p>" + "<img src="+image+"width=300 height=450>"+"<p>================</p>");
-					});
-				}
-			},					
-			error:{										//오류발생시 처리
-				function (data, textStatus, error) {
-					alert("에러가 발생했습니다. =>" + error);
-				}
-			},					
-			complete: {									//작업완료후 처리
-				function (data, textStatus) {
-					alert("작업을 완료했습니다.");
-				}	
-			}									
+			//속성이름 : 속성값, (배열)
+			//type: "post" 또는 "get"
+			type:"post",
+			//dataType: "서버에서 전송받을 데이터 형식"(text, xml, json)
+			dataType: "xml",
+			// async: "true= 비동기식 처리  , false= 동기식 처리"
+			// 동기식: 응답이 올 때까지 다른일 못하고 기다리는 것
+			// 비동기: 서버에 요청 후, 기다리지 않고 다른일 하는 것
+			async : false,
+			//url: "요청할 URL"
+			url: "http://127.0.0.1:8090/jspJquery/ajax2",			
+			//success: { 정상요청에 대한 응답 처리 }, 
+			//error: { 오류 발생시 처리 },
+			//(생략가능)complete: { 작업완료 후 처리 }
+			success: function (info, textStatus) {
+				//info 라는 매개변수를 만든 것.
+				//textStatus
+				$(info).find("book").each(function () {					
+					let title = $(this).find("title").text(); //JS & jQuery 입문 을 가져옴 
+					let writer = $(this).find("writer").text();
+					let image = $(this).find("image").text();
+					$("#bookInfo").append("<p>제목 : " + title + "</p>" + 
+					"<p>출판사 : " + writer + "</p>" + 
+					"<img src=" + image + " width=300 height=450>" + 
+					"<p>=========================================</p>");
+				});
+			},
+			error: function (data, textStatus, error){
+				alert("에러가 발생했습니다.=>" + error);
+			},
+			complete: function (data, textStatus) {
+				alert("작업을 완료했습니다.")
+			}
 		});
-	}
+	}	
 </script>
 </head>
 <body>
 	<input type="button" value="도서 정보 요청" onclick="fn_server()">
 	<div id="bookInfo">
-		
-	</div>	
+	
+	</div>
 </body>
 </html>

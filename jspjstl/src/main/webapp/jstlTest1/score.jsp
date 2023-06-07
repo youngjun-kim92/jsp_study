@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,8 @@
 </head>
 <body>
 	<h2>시험점수를 입력해주세요</h2>
-	<form action="result.jsp" method="get">
-		이름 : <input type="text" name="name">
+	<form action="result0.jsp" method="get">
+		이름 : <input type="text" name="name"> &nbsp;
 		시험점수 : <input type="text" name="score">
 		<input type="submit" value="학점변환">
 	</form>

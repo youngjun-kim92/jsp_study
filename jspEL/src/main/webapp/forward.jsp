@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
+	//setAttribute() 해시맵처럼 값을 세팅하는 것
 	request.setAttribute("address", "서울시 종로구");
-%>    
-    
+%>
 <!DOCTYPE html>
 <html>
 <head>

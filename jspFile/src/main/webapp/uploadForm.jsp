@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    isELIgnored="false"%>
+    pageEncoding="UTF-8"    
+    isELIgnored="false"
+    %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +13,12 @@
 </head>
 <body>
 	<form action="${contextPath}/upload.do" method="post" enctype="multipart/form-data">
-		이름 : <input type="text" name="name"><br>
-		제목 : <input type="text" name="title"><br>
-		내용 : <input type="text" name="content"><br>
-		이미지 파일 1 : <input type="file" name="file1"><br>
-		이미지 파일 2 : <input type="file" name="file2"><br>
+		<!-- 실제로는 input 태그가 아니라 textarea로 함. 지금은 간단하게 만드는 것 -->
+		이름 : <input type="text" name="name"> <br>
+		제목 : <input type="text" name="title"> <br>
+		내용 : <input type="text" name="content"> <br>
+		이미지 파일1 : <input type="file" name="file1"> <br>
+		이미지 파일2 : <input type="file" name="file2"> <br>
 		<input type="submit" value="업로드">
 	</form>
 </body>

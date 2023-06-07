@@ -1,4 +1,4 @@
-package jspjquery.ex02;
+package jspJquery.ex02;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,33 +15,36 @@ public class MemberDAO {
 	
 	public MemberDAO() {
 		try {
-			//JNDI(Java Naming and Directory Interface)를 이용
-			//필요한 자원을 키/값의 쌍으로 저장한 후 필요한 키를 이용해 값을 얻는 방법
-			Context ctx=new InitialContext();
-			Context envContext=(Context)ctx.lookup("java:/comp/env");
-			dataFactory=(DataSource)envContext.lookup("jdbc/oracle");
+			//커넥션 풀은 JNDI(Java Naming Directory Interface)를 이용
+			// JNDI : 필요한 자원을 키와 값의 쌍으로 저장 한 후, 키를 이용하여 값을 얻는 방식
+			Context ctx = new InitialContext();
+			Context envContext = (Context)ctx.lookup("java:/comp/env");
+			//Datasource : Servers - context.xml에 있는 resource 부분을 읽어옴
+			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");			
 		} catch (Exception e) {
-			System.out.println("DB연결 오류");
+			//연결오류 메시지가 난다면 이 메시지가 뜨고 Servers프로젝트 - context.xml확인
+			System.out.println("DB연결오류");
 		}
 	}
-	
-	//ID중복 체크 메소드
+	//ID 중복 체크 메서드
 	public boolean overlappedID(String id) {
-		boolean result=false;
+		boolean result = false;
 		try {
 			conn=dataFactory.getConnection();
-			String query="select decode(count(*), 1, 'true', 'false' as result from membertbl where id=?";
-			pstmt=conn.prepareStatement(query);
+			String query = "select decode(count(*), 1, 'true', 'false') as result from membertbl where id=?";
+			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, id);
-			ResultSet rs=pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
+			//처음으로 돌려놓음
 			rs.next();
-			result=Boolean.parseBoolean(rs.getString("result"));
+			result = Boolean.parseBoolean(rs.getString("result"));
 			rs.close();
 			pstmt.close();
 			conn.close();
 		} catch (Exception e) {
-			System.out.println("DB 처리중 에러발생");
+			System.out.println("ID 중복체크 처리 중 에러 발생!!");
 		}
 		return result;
 	}
+	
 }

@@ -9,7 +9,6 @@ public class MemberBean {
 	private String email;
 	private Date joinDate;
 	private Address addr;
-	
 	public String getId() {
 		return id;
 	}
@@ -48,3 +47,4 @@ public class MemberBean {
 	}
 	
 }
+

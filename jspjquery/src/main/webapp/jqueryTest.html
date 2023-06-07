@@ -5,23 +5,29 @@
 <title>제이쿼리</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	$(function () {
-		$('h1').click(function () {
+
+	$(function() {
+		$("h1").click(function() {
 			$(this).html("안녕하세요");
-		});
-		function imgChange () {
-			$("#imgArea>img").attr("src","./images/boy.png");
-		}
+		});		
 	});
+	function imgChange() {
+		$("#imgArea>img").attr("src","./images/boy.png");
+	}
+	function fn_output() {
+		let value = $("#content").val();
+		$("#output").append(value+"<br>");
+	}
 </script>
 </head>
 <body>
-	<h1>제이쿼리 테스트</h1>	
+	<h1>제이쿼리 테스트</h1>
 	<div id="imgArea">
-		<img alt="" src="./images/girl.png">
+		<img src="./images/girl.png" alt="소녀">
 	</div>
-	<input type="button" value="이미지 바꾸기" onclick="imgChange()">
-	<input type="button" value="내용출력">
+	<input type="button" value="이미지 바꾸기" onclick="imgChange()"> <br>
+	<input type="text" id="content">
+	<input type="button" value="내용출력" onclick="fn_output()">
 	<div id="output">
 		<h2>입력한 결과</h2>
 	</div>

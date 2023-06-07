@@ -8,10 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>애플리케이션 바인딩 실습</title>
+<title>어플리케이션 바인딩 실습</title>
 </head>
 <body>
 	<h2>이름은 세션객체에 저장하고 주소는 애플리케이션 객체에 저장</h2>
 	<a href="appTest2.jsp">두번째 웹 페이지로 이동</a>
+	
 </body>
 </html>

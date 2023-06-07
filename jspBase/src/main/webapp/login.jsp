@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	String id=request.getParameter("user_id");
-	String pwd=request.getParameter("user_pw");
-%>    
+	String id = request.getParameter("user_id");
+	String pw = request.getParameter("user_pw");	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>로그인 정보</h1>
-	<h2>접속한 아이디 : <%=id %></h2>
-	<h2>접속한 비밀번호 : <%=pwd %></h2>
+	<h2>접속한 아이디 : <%= id %></h2>
+	<h2>접속한 비밀번호 : <%= pw %></h2>
 </body>
 </html>

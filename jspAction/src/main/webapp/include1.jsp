@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>애견 카페 메인 페이지(부모페이지)</title>
 </head>
 <body>
 	<h1>애견 카페</h1>
-	<jsp:include page="img_include.jsp" flush="true"> <!-- 자식페이지 삽입 -->
+	<jsp:include page="img_include.jsp" flush="true">
 		<jsp:param value="달마시안" name="name"/>
 		<jsp:param value="dalmatian.jpg" name="imgName"/>
 	</jsp:include>

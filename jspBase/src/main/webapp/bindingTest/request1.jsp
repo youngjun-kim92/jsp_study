@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-		RequestDispatcher dispatcher=request.getRequestDispatcher("request2.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("request2.jsp");
 		dispatcher.forward(request, response);
 	%>
 </body>

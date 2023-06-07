@@ -1,4 +1,4 @@
-package jspjquery.ex03;
+package jspJquery.ex03;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 
 @WebServlet("/json3")
@@ -21,51 +20,66 @@ public class JsonServlet3 extends HttpServlet {
 		doHandle(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
 	
 	private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out=response.getWriter();
-		String kind=(String)request.getParameter("kind");
-		JSONObject totalObject=new JSONObject();				//JSON배열을 저장할 JSON 객체
-		JSONArray jsonArray=new JSONArray();					//JSON배열
-		if(kind.equals("member")) {
-			JSONObject memberInfo=new JSONObject();				//한 명의 회원정보가 들어갈 JSON객체
+		PrintWriter out = response.getWriter();
+		String category = (String)request.getParameter("category");
+		//JSONObject	totalObject= (JSONObject)parser.parse(jsonInfo);
+		
+		//공통으로 사용할 json객체
+		JSONObject	totalObject = new JSONObject();		
+		JSONArray jsonArray = new JSONArray();
+		
+		if(category.equals("member")) {				
+			//회원정보가 들어갈 memberInfo JSON객체 생성
+			JSONObject memberInfo = new JSONObject();
 			memberInfo.put("name", "홍길동");
 			memberInfo.put("age", 50);
 			memberInfo.put("job", "도적");
+			//memberInfo를 배열(memberArray)에 넣기
 			jsonArray.add(memberInfo);
-			memberInfo=new JSONObject();
+			
+			//회원정보가 들어갈 memberInfo 2번째 JSON객체 생성
+			memberInfo = new JSONObject();
 			memberInfo.put("name", "손흥민");
 			memberInfo.put("age", 31);
 			memberInfo.put("job", "축구선수");
 			jsonArray.add(memberInfo);
-			memberInfo=new JSONObject();
+			
+			//회원정보가 들어갈 memberInfo 3번째 JSON객체 생성
+			memberInfo = new JSONObject();
 			memberInfo.put("name", "김철수");
 			memberInfo.put("age", 25);
-			memberInfo.put("job", "영업사원");
+			memberInfo.put("job", "영업사원");		
 			jsonArray.add(memberInfo);
-			totalObject.put("members",jsonArray);
-		}
-		else if(kind.equals("book")) {
-			JSONObject bookInfo=new JSONObject();		
-			bookInfo.put("title", "jQuery 입문");
+			
+			totalObject.put("members", jsonArray);
+		} else if(category.equals("book")) {		
+			//도서1
+			JSONObject bookInfo = new JSONObject();
+			bookInfo.put("title", "JS jQuery 입문");
 			bookInfo.put("writer", "한빛미디어 : 윤인성");
-			bookInfo.put("image", "http://127.0.0.1:8090/jspjquery/images/jajq.png");
+			bookInfo.put("image", "http://127.0.0.1:8090/jspJquery/images/jajq.png");
+			//memberInfo를 배열(memberArray)에 넣기
 			jsonArray.add(bookInfo);
-			bookInfo=new JSONObject();
+			
+			//도서2
+			bookInfo = new JSONObject();
 			bookInfo.put("title", "Node.js 프로그래밍");
 			bookInfo.put("writer", "한빛미디어 : 윤인성");
-			bookInfo.put("image", "http://127.0.0.1:8090/jspjquery/images/node.jpg");
+			bookInfo.put("image", "http://127.0.0.1:8090/jspJquery/images/node.jpg");
+			//memberInfo를 배열(memberArray)에 넣기
 			jsonArray.add(bookInfo);
-			totalObject.put("books",jsonArray);						
+			
+			totalObject.put("books", jsonArray);
 		}
-		String jsonInfo=totalObject.toJSONString();		//JSON객체를 문자열로 변환
-		out.print(jsonInfo);
-;	}
 
+		String jsonInfo = totalObject.toJSONString(); //JSON객체를 문자열로 변환
+		//출력
+		out.print(jsonInfo);
+	}
 }

@@ -7,34 +7,39 @@
 <script type="text/javascript">
 	function fn_server() {
 		$.ajax({
-			type:"get", //또는 "post"
-			dataType:"text",
-			async:false,
-			url:"http://127.0.0.1:8090/jspjquery/ajax1",			//"요청할 URL"
-			data:{msg:"제이쿼리 ajax 공부중"},	//서버로 전송할 데이터 -> {매개변수 : "전송할 값"}
-			sucess: {									//정상 요청에 대한 응답처리
-				function (data, textStatus) {
-					$('#message').append(data);
-				}
-			},					
-			error:{										//오류발생시 처리
-				function (data, textStatus, error) {
-					alert("에러가 발생했습니다. =>" + error);
-				}
-			},					
-			complete: {									//작업완료후 처리
-				function (data, textStatus) {
-					alert("작업을 완료했습니다.");
-				}	
-			}									
+			//속성이름 : 속성값, (배열)
+			//type: "post" 또는 "get"
+			type:"get",
+			//dataType: "서버에서 전송받을 데이터 형식"(text, xml, json)
+			dataType: "text",
+			// async: "true= 비동기식 처리  , false= 동기식 처리"
+			// 동기식: 응답이 올 때까지 다른일 못하고 기다리는 것
+			// 비동기: 서버에 요청 후, 기다리지 않고 다른일 하는 것
+			async : false,
+			//url: "요청할 URL"
+			url: "http://127.0.0.1:8090/jspJquery/ajax1",
+			//data: {서버로 전송할 데이터} => {매개변수 : "전송할 값"}
+			data: {msg: "제이쿼리 ajax 공부중"},
+			//success: { 정상요청에 대한 응답 처리 }, 
+			//error: { 오류 발생시 처리 },
+			//(생략가능)complete: { 작업완료 후 처리 }
+			success: function (data, textStatus) {
+				$("#message").append(data);
+			},
+			error: function (data, textStatus, error){
+				alert("에러가 발생했습니다.=>" + error);
+			},
+			complete: function (data, textStatus) {
+				alert("작업을 완료했습니다.")
+			}
 		});
-	}
+	}	
 </script>
 </head>
 <body>
 	<input type="button" value="전송하기" onclick="fn_server()">
 	<div id="message">
-		
-	</div>	
+	
+	</div>
 </body>
 </html>

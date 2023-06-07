@@ -14,11 +14,11 @@
 	}
 	.list li {
 		position: relative;
-		margin-left: 10px;
+		margin-left : 10px;
 		color: #2d2d2d;
 		line-height: 150px;
 		list-style: none;
-		border-bottom: 2px solid #ccc; 
+		border-bottom: 2px solid #ccc;
 	}
 	.pdimg {
 		margin-left: 50px;
@@ -30,14 +30,16 @@
 	.list li a {
 		color: #2d2d2d;
 		text-decoration: none;
-		margin-left: 340px;
+		margin-left: 300px;
 	}
 	.list li a:hover {
 		text-decoration: underline;
 	}
 	.list li span {
 		color: blue;
-		margin-left: 330px;
+		font-weight: bold;
+		font-size: 24px;
+		margin-left: 300px
 	}
 </style>
 </head>
@@ -50,13 +52,13 @@
 			<span>상품선택</span>
 		</li>
 		<%
-			String[] pdName={"냉장고","컴퓨터","세탁기","에어컨","청소기"};
-			for(int i=0;i<pdName.length;i++) {
+			String[] pdName = {"냉장고", "컴퓨터", "세탁기", "에어컨", "청소기"};
+			for(int i=0; i<5; i++) {
 		%>
 		<li>
 			<a class="pdimg" href="#"><img src="images/<%=i %>.png"></a>
 			<a href="#"><strong><%=pdName[i] %></strong></a>
-			<a href="#"><input type="checkbox" name="chk<%=i %>"></a>
+			<a href="#"><input type="checkbox" name="chk<%=i%>"></a>
 		</li>
 		<%
 			}
